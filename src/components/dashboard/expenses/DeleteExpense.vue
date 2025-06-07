@@ -1,17 +1,16 @@
 <template>
   <modal-comp :show="true" title="Delete Expense" @close="$emit('close')">
     <p>
-      Apakah kamu yakin ingin menghapus "<strong>{{ expense.title }}</strong
-      >"?
+      Are you sure want to delete "<strong>{{ expense.title }} </strong>" from expenses list?
     </p>
     <div class="flex justify-end gap-2 mt-4">
       <button
         @click="$emit('close')"
         class="px-4 py-2 rounded border border-gray-300 text-gray-700"
       >
-        Batal
+        Cancel
       </button>
-      <button @click="handleDelete" class="px-4 py-2 rounded bg-red-600 text-white">Hapus</button>
+      <button @click="handleDelete" class="px-4 py-2 rounded bg-red-600 text-white">Delete</button>
     </div>
   </modal-comp>
 </template>

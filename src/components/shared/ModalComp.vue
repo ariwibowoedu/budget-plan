@@ -5,24 +5,27 @@
     role="dialog"
     aria-modal="true"
   >
-    <div class="bg-white p-6 mx-2 rounded-xl shadow-lg w-full max-w-2xl relative">
-      <button
-        @click="$emit('close')"
-        class="absolute top-2 right-3 text-gray-400 text-2xl"
-        aria-label="close modal"
-      >
-        &times;
-      </button>
+    <div class="bg-white p-6 mx-4 rounded-xl shadow-lg w-full max-w-2xl relative">
+      <div class="flex flex-row justify-between items-center border-b-2 border-gray-600 pb-2 mb-4">
+        <h2 v-if="title" class="text-xl font-semibold">
+          {{ title }}
+        </h2>
+        <button @click="$emit('close')" class="text-gray-400 text-2xl" aria-label="close modal">
+          <FeatherIcon clasess="w-4 h-4" icon="x" />
+        </button>
+      </div>
 
-      <h2 v-if="title" class="text-xl font-semibold mb-4">{{ title }}</h2>
       <slot />
     </div>
   </div>
 </template>
 
 <script setup>
+import FeatherIcon from '@/components/utils/featherIcon/FeatherIcon.vue'
 defineProps({
-  show: Boolean,
+  show: {
+    type: Boolean,
+  },
   title: {
     type: String,
     default: '',

@@ -1,11 +1,7 @@
 <template>
-  <div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-    <div class="bg-white p-6 rounded-xl shadow-lg w-full max-w-2xl relative">
-      <button @click="$emit('close')" class="absolute top-2 right-3 text-gray-400 text-2xl">
-        &times;
-      </button>
-      <h1 class="text-2xl font-bold mb-4">Update Account</h1>
-      <form @submit.prevent="handleUpdate" class="space-y-2">
+  <ModalComp :show="true" title="Update Account" @close="$emit('close')">
+    <BaseForm :submit-label="'Save'" @submit="handleUpdate" @cancel="cancel">
+      <template #fields>
         <div class="block mb-1">
           <label class="block mb-1 font-medium">Name</label>
           <input
@@ -26,14 +22,15 @@
             required
           />
         </div>
-        <button class="bg-blue-500 text-white px-4 py-2 rounded">Update</button>
-      </form>
-    </div>
-  </div>
+      </template>
+    </BaseForm>
+  </ModalComp>
 </template>
 
 <script setup>
 import { ref } from 'vue'
+import ModalComp from '@/components/shared/ModalComp.vue'
+import BaseForm from '@/components/shared/BaseForm.vue'
 import { useAccounts } from '@/components/composables/useAccounts'
 
 const props = defineProps({

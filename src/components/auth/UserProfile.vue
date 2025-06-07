@@ -1,5 +1,5 @@
 <template>
-  <div class="absolute right-2 top-8 mt-2 2-40 bg-white border-gray-200 rounded-lg shadow-lg z-50">
+  <div class="absolute right-4 top-12 mt-2 2-40 bg-white border-gray-200 rounded-lg shadow-lg z-50">
     <button
       class="block w-full text-left text-lg px-4 py-2 rounde-lg text-gray-700 hover:bg-blue-300 rounded-lg transition duration-300"
     >

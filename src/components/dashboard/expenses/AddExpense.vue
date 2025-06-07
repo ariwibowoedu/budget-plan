@@ -1,14 +1,27 @@
 <template>
-  <ModalComp title="Add Account" :show="true" @close="$emit('close')">
+  <ModalComp title="Add Expense" :show="true" @close="$emit('close')">
     <BaseForm :submit-label="'Save'" @submit="handleSubmit" @cancel="cancel">
       <template #fields>
-        <input type="text" v-model="title" placeholder="Title" class="border p-2 w-full rounded" />
-        <input
-          type="number"
-          v-model.number="amount"
-          placeholder="Amount"
-          class="border p-2 w-full rounded mt-2"
-        />
+        <div class="block mb-1">
+          <label class="block mb-1 font-medium">Name</label>
+          <input
+            type="text"
+            v-model="name"
+            class="w-full border rounded p-2"
+            placeholder="ex:Rent House"
+            required
+          />
+        </div>
+        <div class="block mb-1">
+          <label class="block mb-1 font-medium">Amount</label>
+          <input
+            type="number"
+            v-model.number="amount"
+            placeholder="ex: 200.000"
+            class="border p-2 w-full rounded"
+            required
+          />
+        </div>
       </template>
     </BaseForm>
   </ModalComp>
@@ -29,6 +42,8 @@ const { addExpense } = useExpenses()
 
 const handleSubmit = async () => {
   await addExpense({ title: title.value, amount: amount.value })
+  title.value = ''
+  amount.value = 0
   emit('updated')
   emit('close')
 }
